@@ -82,10 +82,10 @@ Structured select:
 ```go
 // Define a struct that represent a record
 type Item struct {
-Id      int64     `db:"id"`
-Name    string    `db:"name"` // if non-pointer member received null value, it will be set to zero value for the type
-Value   *string   `db:"value"` // if pointer member receives null value, it will be set to nil
-Time    time.Time `db:"time"`
+    Id      int64     `db:"id"`
+    Name    string    `db:"name"` // if non-pointer member received null value, it will be set to zero value for the type
+    Value   *string   `db:"value"` // if pointer member receives null value, it will be set to nil
+    Time    time.Time `db:"time"`
 }
 items, err := connection.Select[Item]("SELECT id, name, value, time FROM table", ...)
 // items will be slice of Item
