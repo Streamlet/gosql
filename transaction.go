@@ -39,3 +39,10 @@ func (c *Connection) Rollback() error {
 	c.tx = nil
 	return nil
 }
+
+func (c *Connection) End() {
+	if c.tx == nil {
+		return
+	}
+	_ = c.Rollback()
+}
