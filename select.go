@@ -21,6 +21,7 @@ func Select[T any](c *Connection, sql string, bind ...interface{}) ([]T, error) 
 	if err != nil {
 		return nil, err
 	}
+	defer rs.Close()
 
 	columns, err := rs.Columns()
 	if err != nil {
