@@ -19,6 +19,10 @@ func Connect(driverName, dataSourceName string) (*Connection, error) {
 	return &Connection{db: db}, nil
 }
 
+func (c *Connection) Raw() *sql.DB {
+	return c.db
+}
+
 func (c *Connection) Close() error {
 	if c.tx != nil {
 		_ = c.tx.Rollback()
